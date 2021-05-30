@@ -1,5 +1,5 @@
 <p align="center">
-<img height=100 src="https://raw.githubusercontent.com/samiulhsohan/easyticket/dcf5be83c803e9d5920737f5e9c3d9fd428d97ca/easyticket_logo.svg"/></p>
+<img height=100 src="https://raw.githubusercontent.com/samiulhsohan/easyticket/ef589a96f553e17e75dbd3bdabbbe54fd6108aa1/easyticket_logo.svg"/></p>
 
 <p align="center">
   <strong>Enhancing train ticket booking experience 🚄</strong>
