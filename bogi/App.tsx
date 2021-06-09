@@ -16,6 +16,10 @@ import Routes from "./app/Routes";
 import { getInitialData } from "./app/services/intialData";
 import ErrorScreen from "./app/screens/ErrorScreen";
 import AppOutdatedScreen from "./app/screens/AppOutdatedScreen";
+import {
+  useFonts as useInterFonts,
+  Inter_500Medium,
+} from "@expo-google-fonts/inter";
 
 const AppWrapper = () => {
   return (
@@ -29,6 +33,10 @@ const App = () => {
   const dispatch = useAppDispatch();
   const [fontsLoaded] = useFonts({
     Noirrit: require("./app/assets/fonts/noirrit.ttf"),
+  });
+
+  const [interFontLoaded] = useInterFonts({
+    "Inter-Medium": Inter_500Medium,
   });
 
   const [initialDataLoaded, setInitialDataLoaded] = useState(false);
@@ -78,7 +86,7 @@ const App = () => {
     loadInitialData();
   }, []);
 
-  if (fontsLoaded) {
+  if (fontsLoaded && interFontLoaded) {
     if (initialDataLoaded && appOutdated) {
       return <AppOutdatedScreen />;
     }
