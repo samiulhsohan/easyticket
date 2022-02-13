@@ -1,7 +1,6 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import TicketingStack from "./TicketingStack";
-import AuthStack from "./AuthStack";
 
 interface RoutesProps {
   terms: {
@@ -13,8 +12,7 @@ interface RoutesProps {
 const Routes: React.FC<RoutesProps> = ({ terms }) => {
   return (
     <NavigationContainer>
-      {/* <TicketingStack terms={terms} /> */}
-      <AuthStack />
+      <TicketingStack terms={terms} />
     </NavigationContainer>
   );
 };

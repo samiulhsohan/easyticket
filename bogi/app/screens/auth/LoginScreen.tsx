@@ -1,15 +1,20 @@
 import React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, Alert } from "react-native";
 import { Formik } from "formik";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import SafeView from "../../components/common/SafeView";
 import { TextInput } from "react-native-gesture-handler";
 import globalStyles from "../../styles/global";
 import Button from "../../components/common/Button";
 import http from "../../services/http";
+import { AUTH_TOKEN_KEY } from "../../constants";
+import { useNavigation } from "@react-navigation/native";
 
 interface LoginScreenProps {}
 
 const LoginScreen: React.FC<LoginScreenProps> = ({}) => {
+  const navigation = useNavigation();
+
   const handleSubmit = async ({
     username,
     password,
@@ -24,9 +29,17 @@ const LoginScreen: React.FC<LoginScreenProps> = ({}) => {
         rememberMe: true,
       });
 
-      console.log(res.headers);
-    } catch (err) {
-      console.log("err", err.response.data);
+      const { authorization } = res.headers;
+
+      if (!authorization) {
+        Alert.alert("ভুল ইউজার নেম অথবা পাসওয়ার্ড");
+      }
+
+      await AsyncStorage.setItem(AUTH_TOKEN_KEY, res.headers.authorization);
+
+      navigation.navigate("Home");
+    } catch (err: any) {
+      Alert.alert("ভুল ইউজার নেম অথবা পাসওয়ার্ড");
     }
   };
 
@@ -56,6 +69,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({}) => {
                       placeholder="ইমেইল অথবা মোবাইল নাম্বার"
                       onChangeText={handleChange("username")}
                       value={values.username}
+                      autoCapitalize="none"
                     />
                   </View>
 

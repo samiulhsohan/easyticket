@@ -11,6 +11,7 @@ export type TicketingStackParamList = {
   Terms: { message: string };
   TrainDetails: { train: ITrain };
   TrainRoutes: { train: ITrain };
+  Login: undefined;
 };
 
 export type TicketingStackNavProps<T extends keyof TicketingStackParamList> = {

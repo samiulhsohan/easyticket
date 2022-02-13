@@ -14,6 +14,7 @@ import TermsScreen from "./screens/TermsScreen";
 import { TicketingStackParamList } from "./TicketingStackParamList";
 import TrainDetailsHeader from "./components/screens/train-details/TrainDetailsHeader";
 import TrainRoutes from "./screens/TrainRoutes";
+import LoginScreen from "./screens/auth/LoginScreen";
 
 interface TicketingStackProps {
   terms: {
@@ -92,6 +93,11 @@ const TicketingStack: React.FC<TicketingStackProps> = ({ terms }) => {
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           headerShown: false,
         }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
