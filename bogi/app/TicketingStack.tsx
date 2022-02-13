@@ -27,7 +27,10 @@ const Stack = createStackNavigator<TicketingStackParamList>();
 
 const TicketingStack: React.FC<TicketingStackProps> = ({ terms }) => {
   return (
-    <Stack.Navigator initialRouteName={terms.agreed ? "Home" : "Terms"}>
+    <Stack.Navigator
+      headerMode="screen"
+      initialRouteName={terms.agreed ? "Home" : "Terms"}
+    >
       <Stack.Screen
         name="Home"
         component={HomeScreen}

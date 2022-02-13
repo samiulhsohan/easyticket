@@ -22,7 +22,6 @@ const TrainRoutes: React.FC<
         <TitleBar
           type="back"
           statusBarBackground={colors.ACCENT}
-          barStyle="light-content"
           onPress={() => navigation.goBack()}
         >
           ট্রেন রুট
