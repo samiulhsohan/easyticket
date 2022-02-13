@@ -6,7 +6,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
-  Alert,
   ScrollView,
 } from "react-native";
 import DurationDivider from "../components/icons/DurationDivider";
@@ -25,6 +24,8 @@ import TrainCabinSelectCard from "../components/screens/train-details/TrainCabin
 import { useAppSelector } from "../store/hooks";
 import { getBRConfig } from "../store/config";
 import Notice from "../components/common/Notice";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AUTH_TOKEN_KEY } from "../constants";
 
 interface TrainDetailsScreenProps {}
 
@@ -57,12 +58,13 @@ const TrainDetailsScreen: React.FC<
     setSelectedCabin(cabin);
   };
 
-  const handleBuy = () => {
-    Alert.alert("", "টিকিট কাটার ফিচার শীঘ্রই আসছে!", [
-      {
-        text: "ওকে",
-      },
-    ]);
+  const handleBuy = async () => {
+    const authToken = await AsyncStorage.getItem(AUTH_TOKEN_KEY);
+
+    if (!authToken) {
+      navigation.navigate("Login");
+      return;
+    }
   };
 
   useEffect(() => {

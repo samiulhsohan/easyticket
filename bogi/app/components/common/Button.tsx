@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableHighlight, View, StyleSheet, Text } from "react-native";
+import { TouchableNativeFeedback, View, StyleSheet, Text } from "react-native";
 import colors from "../../styles/colors";
 import globalStyles from "../../styles/global";
 
@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <View>
       {variant === "large" && (
-        <TouchableHighlight
+        <TouchableNativeFeedback
           style={{ borderRadius: 8 }}
           onPress={onPress}
           disabled={disabled}
@@ -34,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({
               {children}
             </Text>
           </View>
-        </TouchableHighlight>
+        </TouchableNativeFeedback>
       )}
     </View>
   );
